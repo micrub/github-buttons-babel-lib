@@ -5,12 +5,13 @@ Convenience compilation of open source projects for NPM based distribution.
 ## TODO
 
 * NPM module distribution
-* Porting `MainRenderer` to ES.
+* Porting `Renderer` to Babel.
 * Expose interface for:
-  * [ Vue ](https://github.com/ntkme/github-buttons/tree/master/dist/vue)
   * [ React ](https://github.com/ntkme/github-buttons/tree/master/dist/react)
-  * [ Angular ](https://github.com/ntkme/github-buttons/tree/master/dist/angular)
-  * [ MainRenderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js)
+  * [ Renderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js)
+  * Optional:
+    * [ Vue ](https://github.com/ntkme/github-buttons/tree/master/dist/vue)
+    * [ Angular ](https://github.com/ntkme/github-buttons/tree/master/dist/angular)
 
 
 # Based on:
