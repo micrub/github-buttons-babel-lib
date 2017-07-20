@@ -4,7 +4,7 @@ Convenience compilation of open source projects for NPM based distribution.
 
 ## TODO
 
-* NPM module distribution
+* NPM and BOWER module distribution
 * Porting `Renderer` to Babel.
 * Expose interface for:
   * [ React ](https://github.com/ntkme/github-buttons/tree/master/dist/react)
