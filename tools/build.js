@@ -36,6 +36,7 @@ promise = promise.then(() => del(['dist/*']));
     dest: `dist/${format === 'cjs' ? 'index' : `index.${format}`}.js`,
     format,
     sourceMap: true,
+    useStrict: false,
     moduleName: format === 'umd' ? pkg.name : undefined,
   })));
 });
