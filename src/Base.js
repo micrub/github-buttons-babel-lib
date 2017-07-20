@@ -1,4 +1,4 @@
-export Renderer from "./Renderer";
+import Renderer from "./Renderer";
 
 class Base {
 
@@ -21,10 +21,10 @@ class Base {
           ""
         );
       }
-      if (document.title === Base.UUID) {
+      if (document.title === Renderer.UUID) {
         Renderer.renderFrameContent(document.location.hash);
       } else {
-        Render.defer(Renderer.renderAll);
+        Renderer.defer(Renderer.renderAll);
       }
     }
   }

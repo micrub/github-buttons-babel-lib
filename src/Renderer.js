@@ -1,5 +1,6 @@
 const CEIL = Math.ceil;
 const ROUND = Math.round;
+const MAX = Math.max;
 
 let WIN = window;
 let DOC = window.document;
@@ -42,6 +43,7 @@ class Renderer {
     iframe.style.border = "none";
     iframe.src = "javascript:0";
     DOC.body.appendChild(iframe);
+    console.log(DOC.body);
     onload = function() {
       var size;
       size = Renderer.getFrameContentSize(iframe);
@@ -49,7 +51,7 @@ class Renderer {
       Renderer.onceEvent(iframe, "load", function() {
         Renderer.setFrameSize(iframe, size);
       });
-      iframe.src = BASEURL + "buttons.html" + hash;
+      iframe.src = Renderer.BASEURL + "buttons.html" + hash;
       targetNode.parentNode.replaceChild(iframe, targetNode);
     };
     Renderer.onceEvent(iframe, "load", function() {
@@ -61,7 +63,8 @@ class Renderer {
       }
     });
     contentDocument = iframe.contentWindow.document;
-    contentDocument.open().write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>" + Renderer.UUID + "</title><link rel=\"stylesheet\" href=\"" + Renderer.BASEURL + "assets/css/buttons.css\"><script>document.location.hash = \"" + hash + "\";</script></head><body><script src=\"" + Renderer.BASEURL + "buttons.js\"></script></body></html>");
+    console.log(iframe.contentWindow.document);
+    contentDocument.open().write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>" + Renderer.UUID + "</title><link rel=\"stylesheet\" href=\"" + Renderer.BASEURL + "buttons.css\"><script>document.location.hash = \"" + hash + "\";</script></head><body><script src=\"" + Renderer.BASEURL + "index.out.js\"></script></body></html>");
     contentDocument.close();
   }
 
@@ -72,7 +75,7 @@ class Renderer {
   }
 
   static getFrameContentSize(iframe) {
-    var body, boundingClientRect, contentDocument, height, html, width;
+    var body, bClientRect, contentDocument, height, html, width;
     contentDocument = iframe.contentWindow.document;
     html = contentDocument.documentElement;
     body = contentDocument.body;
@@ -80,9 +83,9 @@ class Renderer {
     height = html.scrollHeight;
     if (body.getBoundingClientRect) {
       body.style.display = "inline-block";
-      boundingClientRect = body.getBoundingClientRect();
-      width = Math.max(width, ceilPixel(boundingClientRect.width || boundingClientRect.right - boundingClientRect.left));
-      height = Math.max(height, ceilPixel(boundingClientRect.height || boundingClientRect.bottom - boundingClientRect.top));
+      bClientRect = body.getBoundingClientRect();
+      width = MAX(width, Renderer.ceilPixel(bClientRect.width || bClientRect.right - bClientRect.left));
+      height = MAX(height, Renderer.ceilPixel(bClientRect.height || bClientRect.bottom - bClientRect.top));
       body.style.display = "";
     }
     return [width, height];
@@ -198,7 +201,7 @@ class Renderer {
   }
   static jsonp(url, func) {
     let head, script;
-    script = createElement("script");
+    script = Renderer.createElement("script");
     script.async = true;
     script.src = url + (/\?/.test(url) ? "&" : "?") + "callback=_";
     WIN._ = function(json) {
@@ -230,7 +233,7 @@ class Renderer {
   }
   static renderButton(config) {
     let a, ariaLabel, i, span;
-    a = createElement("a");
+    a = Renderer.createElement("a");
     a.href = config.href;
     if (!/\.github\.com$/.test("." + a.hostname)) {
       a.href = "#";
@@ -242,7 +245,7 @@ class Renderer {
     if (ariaLabel = config["aria-label"]) {
       a.setAttribute("aria-label", ariaLabel);
     }
-    i = a.appendChild(createElement("i"));
+    i = a.appendChild(Renderer.createElement("i"));
     i.className = Renderer.ICON_CLASS + " " + (config["data-icon"] || Renderer.ICON_CLASS_DEFAULT);
     i.setAttribute("aria-hidden", "true");
     a.appendChild(Renderer.createTextNode(" "));
