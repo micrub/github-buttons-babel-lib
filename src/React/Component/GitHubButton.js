@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render } from "../../Renderer";
+import Renderer from "../../Renderer";
+
+const render = Renderer.render;
 
 export default class GitHubButton extends React.Component {
   render() {

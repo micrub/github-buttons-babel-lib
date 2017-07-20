@@ -1,3 +1,7 @@
 
+import Base from './Base';
+export Renderer from './Renderer';
+export GitHubButton from './React/Component/GitHubButton';
 
-export Base from './Base';
+const base = new Base();
+
