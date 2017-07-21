@@ -1,7 +1,7 @@
 import Renderer from "./Renderer";
+import GitHubButton from "./React/Component/GitHubButton";
 
 class Base {
-
   constructor() {
     if (typeof window === "undefined") {
       throw new Error("Build to run only in browser environment.");
@@ -12,9 +12,20 @@ class Base {
   init() {
     let self = this;
     if (typeof define === "function" && define.amd) {
-      define([], { render: Renderer.render, Renderer: Renderer });
+
+      /**
+       * Export render and GitHubButton React componenet in case of AMD
+       */
+
+      define([], { render: Renderer.render, GitHubButton });
+
     } else {
-      if (!{}.hasOwnProperty.call(document, "currentScript") && document.currentScript && delete document.currentScript && document.currentScript) {
+      if (
+        !{}.hasOwnProperty.call(document, "currentScript") &&
+          document.currentScript &&
+          delete document.currentScript &&
+          document.currentScript
+      ) {
         Renderer.BASEURL = document.currentScript.src.replace(
           /[^\/]*([?#].*)?$/,
           ""
