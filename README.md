@@ -6,7 +6,7 @@ Convenience compilation of open source projects for NPM based distribution.
 
 * Module build distribution using:
   * NPM - `npm install @michaelr/github-buttons-babel-lib`
-    * Current version `0.0.4`
+    * Current version `0.0.7`
   * BOWER - @wip
 * Porting [ Renderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js) to ES2015.
 * ES2015 code optimization - @wip
