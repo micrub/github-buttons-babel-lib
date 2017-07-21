@@ -7,6 +7,8 @@ let DOC = window.document;
 
 class Renderer {
 
+  static UUID = "faa76404-3b97-5585-b449-4bc51338fbd1";
+
   static BUTTON_CLASS = "github-button";
   static ICON_CLASS = "octicon";
   static ICON_CLASS_DEFAULT = Renderer.ICON_CLASS + "-mark-github";
@@ -43,7 +45,6 @@ class Renderer {
     iframe.style.border = "none";
     iframe.src = "javascript:0";
     DOC.body.appendChild(iframe);
-    console.log(DOC.body);
     onload = function() {
       var size;
       size = Renderer.getFrameContentSize(iframe);
@@ -63,7 +64,6 @@ class Renderer {
       }
     });
     contentDocument = iframe.contentWindow.document;
-    console.log(iframe.contentWindow.document);
     contentDocument.open().write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>" + Renderer.UUID + "</title><link rel=\"stylesheet\" href=\"" + Renderer.BASEURL + "buttons.css\"><script>document.location.hash = \"" + hash + "\";</script></head><body><script src=\"" + Renderer.BASEURL + "index.out.js\"></script></body></html>");
     contentDocument.close();
   }
@@ -343,7 +343,7 @@ class Renderer {
     } else {
       if (DOC.addEventListener) {
         token = 0;
-        callback = function() {
+        callback = function(e) {
           if (!token && (token = 1)) {
             func();
           }
