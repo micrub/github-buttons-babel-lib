@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import Base from '../src/Base';
 
 describe('Base', () => {
