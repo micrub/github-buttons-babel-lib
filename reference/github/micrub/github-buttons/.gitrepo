@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:micrub/github-buttons.git
+	branch = master
+	commit = ad69e456864e6aaeb026166c7ee6cfe17edd56ba
+	parent = c0f1b71454836663a4829508140601421626116d
+	cmdver = 0.3.1
