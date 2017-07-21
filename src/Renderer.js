@@ -308,6 +308,7 @@ class Renderer {
     if (/^large$/i.test(config["data-size"])) {
       DOC.body.className = "large";
     }
+    console.log(config);
     button = Renderer.renderButton(config);
     if (/^(true|1)$/i.test(config["data-show-count"])) {
       Renderer.renderCount(button);

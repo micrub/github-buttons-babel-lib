@@ -61,6 +61,10 @@ promise = promise.then(() => {
   fs.writeFileSync('dist/LICENSE.txt', fs.readFileSync('LICENSE.txt', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/octicons.lt-ie8.css', fs.readFileSync('resources/assets/css/octicons/lt-ie8.css', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/octicons.sizes.css', fs.readFileSync('resources/assets/css/octicons/sizes.css', 'utf-8'), 'utf-8');
+  fs.writeFileSync('dist/octicons.woff2', fs.readFileSync('resources/assets/css/octicons/octicons.woff2', 'utf-8'), 'utf-8');
+  fs.writeFileSync('dist/octicons.woff', fs.readFileSync('resources/assets/css/octicons/octicons.woff', 'utf-8'), 'utf-8');
+  fs.writeFileSync('dist/octicons.ttf', fs.readFileSync('resources/assets/css/octicons/octicons.ttf', 'utf-8'), 'utf-8');
+  fs.writeFileSync('dist/octicons.min.css', fs.readFileSync('resources/assets/css/octicons/octicons.min.css', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/buttons.css', fs.readFileSync('resources/assets/css/buttons.css', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/buttons.css.map', fs.readFileSync('resources/assets/css/buttons.css.map', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/index.html', fs.readFileSync('resources/index.html', 'utf-8'), 'utf-8');
