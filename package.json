@@ -41,24 +41,17 @@
     "babel-register": "^6.16.3",
     "browserify": "^14.4.0",
     "chai": "^4.0.0-canary.1",
-    "coveralls": "^2.11.14",
     "del": "^3.0.0",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.1.2",
     "rollup": "^0.45.2",
-    "rollup-plugin-babel": "^2.6.1",
-    "sinon": "^2.0.0-pre.3",
+    "rollup-plugin-babel": "^2.6.1"
   },
   "scripts": {
     "lint": "eslint src test",
     "test": "mocha --compilers js:babel-register",
     "test:watch": "mocha --compilers js:babel-register --reporter min --watch",
-    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "build": "node tools/build",
     "publish": "cd dist/ && npm publish",
-    "prepublish": "npm run build",
-    "publish:docs": "easystatic deploy docs --repo kriasoft/babel-starter-kit",
-    "start": "easystatic start docs"
+    "prepublish": "npm run build"
   }
 }
