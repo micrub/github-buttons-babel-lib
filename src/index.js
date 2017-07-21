@@ -1,7 +1,9 @@
 
 import Base from './Base';
 import Renderer from './Renderer';
-export GitHubButton from './React/Component/GitHubButton';
+import GitHubButton from './React/Component/GitHubButton';
+
+window.GitHubButton = GitHubButton || null;
 
 const base = new Base();
 
