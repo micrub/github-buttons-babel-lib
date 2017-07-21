@@ -2,15 +2,18 @@
 
 Convenience compilation of open source projects for NPM based distribution.
 
-## TODO
+## Features
 
-* NPM and BOWER module distribution
-* Porting `Renderer` to Babel.
-* Expose interface for:
-  * [ React ](https://github.com/ntkme/github-buttons/tree/master/dist/react)
-  * [ Renderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js)
-
-### Features
+* Module build distribution using:
+  * NPM - `michaelr/github-buttons-babel-lib`
+    * Current version `0.0.4`
+  * BOWER - @wip
+* Porting [ Renderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js) to ES2015.
+* ES2015 code optimization - @wip
+* Tests - @wip
+  * Client side
+  * `mocha` unit testing.
+* Expose [ React Component ](https://github.com/ntkme/github-buttons/tree/master/dist/react)
 
 # Based on:
 
