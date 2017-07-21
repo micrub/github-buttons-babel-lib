@@ -1,12 +1,13 @@
+
 const CEIL = Math.ceil;
 const ROUND = Math.round;
 const MAX = Math.max;
 
-let WIN = window;
-let DOC = window.document;
 
 class Renderer {
 
+  static WIN = window;
+  static DOC = window.document;
   static UUID = "faa76404-3b97-5585-b449-4bc51338fbd1";
 
   static BUTTON_CLASS = "github-button";
@@ -18,8 +19,9 @@ class Renderer {
   static COUNT_MATCH = /^\/([^\/?#]+)(?:\/([^\/?#]+)(?:\/(?:(subscription)|(fork)|(issues)|([^\/?#]+)))?)?(?:[\/?#]|$)/;
   static PATH_MATCH = /^https?:\/\/((gist\.)?github\.com\/[^\/?#]+\/[^\/?#]+\/archive\/|github\.com\/[^\/?#]+\/[^\/?#]+\/releases\/download\/|codeload\.github\.com\/)/;
 
-  static decodeURIComponent = window.decodeURIComponent;
-  static encodeURIComponent = window.encodeURIComponent;
+  static decodeURIComponent = Renderer.WIN.decodeURIComponent;
+  static encodeURIComponent = Renderer.WIN.encodeURIComponent;
+
   constructor() {}
 
   static render(targetNode, config) {
@@ -44,7 +46,7 @@ class Renderer {
     Renderer.setFrameSize(iframe, [1, 0]);
     iframe.style.border = "none";
     iframe.src = "javascript:0";
-    DOC.body.appendChild(iframe);
+    Renderer.DOC.body.appendChild(iframe);
     onload = function() {
       var size;
       size = Renderer.getFrameContentSize(iframe);
@@ -70,7 +72,7 @@ class Renderer {
 
   static ceilPixel(px) {
     var devicePixelRatio;
-    devicePixelRatio = WIN.devicePixelRatio || 1;
+    devicePixelRatio = Renderer.WIN.devicePixelRatio || 1;
     return (devicePixelRatio > 1 ? CEIL(ROUND(px * devicePixelRatio) / devicePixelRatio * 2) / 2 : CEIL(px)) || 0;
   }
 
@@ -114,7 +116,7 @@ class Renderer {
     deprecate = function(oldAttribute, newAttribute, newValue) {
       if (anchor.getAttribute(oldAttribute)) {
         config[newAttribute] = newValue;
-        window.console && window.console.warn("GitHub Buttons deprecated `" + oldAttribute + "`: use `" + newAttribute + "=\"" + newValue + "\"` instead. Please refer to https://github.com/ntkme/github-buttons#readme for more info.");
+        Renderer.WIN.console && Renderer.WIN.console.warn("GitHub Buttons deprecated `" + oldAttribute + "`: use `" + newAttribute + "=\"" + newValue + "\"` instead. Please refer to https://github.com/ntkme/github-buttons#readme for more info.");
       }
     };
     deprecate("data-count-api", "data-show-count", "true");
@@ -138,11 +140,11 @@ class Renderer {
     });
   };
   static createElement(tag) {
-    return DOC.createElement(tag);
+    return Renderer.DOC.createElement(tag);
   };
 
   static createTextNode(text) {
-    return DOC.createTextNode(text);
+    return Renderer.DOC.createTextNode(text);
   };
   static onEvent(target, eventName, func) {
     if (target.addEventListener) {
@@ -159,13 +161,13 @@ class Renderer {
       } else {
         target.detachEvent("on" + eventName, callback);
       }
-      return func(event || WIN.event);
+      return func(event || Renderer.WIN.event);
     };
     Renderer.onEvent(target, eventName, callback);
   }
 
   static getProto() {
-    return /^http:/.test(DOC.location) ? "http" : "https";
+    return /^http:/.test(Renderer.DOC.location) ? "http" : "https";
   }
   static stringifyQueryString(obj) {
     let name, params, value;
@@ -204,24 +206,24 @@ class Renderer {
     script = Renderer.createElement("script");
     script.async = true;
     script.src = url + (/\?/.test(url) ? "&" : "?") + "callback=_";
-    WIN._ = function(json) {
-      WIN._ = null;
+    Renderer.WIN._ = function(json) {
+      Renderer.WIN._ = null;
       func(json);
     };
-    WIN._.$ = script;
+    Renderer.WIN._.$ = script;
     Renderer,onEvent(script, "error", () => {
-      WIN._ = null;
+      Renderer.WIN._ = null;
     });
     if (script.readyState) {
       Renderer.onEvent(script, "readystatechange", function() {
         if (script.readyState === "loaded" && script.children && script.readyState === "loading") {
-          WIN._ = null;
+          Renderer.WIN._ = null;
         }
       });
     }
     head = document.getElementsByTagName("head")[0];
-    if ("[object Opera]" === {}.toString.call(window.opera)) {
-      Renderer.onEvent(DOC, "DOMContentLoaded", function() {
+    if ("[object Opera]" === {}.toString.call(Renderer.WIN.opera)) {
+      Renderer.onEvent(Renderer.DOC, "DOMContentLoaded", function() {
         head.appendChild(script);
       });
     } else {
@@ -251,7 +253,7 @@ class Renderer {
     a.appendChild(Renderer.createTextNode(" "));
     span = a.appendChild(Renderer.createElement("span"));
     span.appendChild(Renderer.createTextNode(config["data-text"] || ""));
-    return DOC.body.appendChild(a);
+    return Renderer.DOC.body.appendChild(a);
   };
   static renderCount(button) {
     var api, href, match, property;
@@ -306,7 +308,7 @@ class Renderer {
       return;
     }
     if (/^large$/i.test(config["data-size"])) {
-      DOC.body.className = "large";
+      Renderer.DOC.body.className = "large";
     }
     button = Renderer.renderButton(config);
     if (/^(true|1)$/i.test(config["data-show-count"])) {
@@ -316,10 +318,10 @@ class Renderer {
   static renderAll() {
     var anchor, anchors, j, k, len, len1, ref1;
     anchors = [];
-    if (DOC.querySelectorAll) {
-      anchors = DOC.querySelectorAll("a." + Renderer.BUTTON_CLASS);
+    if (Renderer.DOC.querySelectorAll) {
+      anchors = Renderer.DOC.querySelectorAll("a." + Renderer.BUTTON_CLASS);
     } else {
-      ref1 = DOC.getElementsByTagName("a");
+      ref1 = Renderer.DOC.getElementsByTagName("a");
       for (j = 0, len = ref1.length; j < len; j++) {
         anchor = ref1[j];
         if (~(" " + anchor.className + " ").replace(/[ \t\n\f\r]+/g, " ").indexOf(" " + Renderer.BUTTON_CLASS + " ")) {
@@ -335,29 +337,29 @@ class Renderer {
   static defer(func) {
     var callback, token;
     if (
-      /m/.test(DOC.readyState) ||
-        !/g/.test(DOC.readyState) &&
-          !DOC.documentElement.doScroll
+      /m/.test(Renderer.DOC.readyState) ||
+        !/g/.test(Renderer.DOC.readyState) &&
+          !Renderer.DOC.documentElement.doScroll
     ) {
-      WIN.setTimeout(func);
+      Renderer.WIN.setTimeout(func);
     } else {
-      if (DOC.addEventListener) {
+      if (Renderer.DOC.addEventListener) {
         token = 0;
         callback = function(e) {
           if (!token && (token = 1)) {
             func();
           }
         };
-        Renderer.onceEvent(DOC, "DOMContentLoaded", callback);
-        Renderer.onceEvent(WIN, "load", callback);
+        Renderer.onceEvent(Renderer.DOC, "DOMContentLoaded", callback);
+        Renderer.onceEvent(Renderer.WIN, "load", callback);
       } else {
         callback = function() {
-          if (/m/.test(DOC.readyState)) {
-            DOC.detachEvent("onreadystatechange", callback);
+          if (/m/.test(Renderer.DOC.readyState)) {
+            Renderer.DOC.detachEvent("onreadystatechange", callback);
             func();
           }
         };
-        DOC.attachEvent("onreadystatechange", callback);
+        Renderer.DOC.attachEvent("onreadystatechange", callback);
       }
     }
   }
