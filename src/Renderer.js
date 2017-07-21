@@ -318,7 +318,7 @@ class Renderer {
   static renderAll() {
     var anchor, anchors, j, k, len, len1, ref1;
     anchors = [];
-    if (DOC.querySelectorAll) {
+    if (Renderer.DOC.querySelectorAll) {
       anchors = Renderer.DOC.querySelectorAll("a." + Renderer.BUTTON_CLASS);
     } else {
       ref1 = Renderer.DOC.getElementsByTagName("a");
