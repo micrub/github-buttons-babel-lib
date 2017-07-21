@@ -13,6 +13,7 @@ Convenience compilation of open source projects for NPM based distribution.
     * [ Vue ](https://github.com/ntkme/github-buttons/tree/master/dist/vue)
     * [ Angular ](https://github.com/ntkme/github-buttons/tree/master/dist/angular)
 
+### Features
 
 # Based on:
 
