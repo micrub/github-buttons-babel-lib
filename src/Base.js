@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-class Base {
-  constructor() {}
-=======
 import Renderer from "./Renderer";
 
 class Base {
@@ -31,7 +27,6 @@ class Base {
       }
     }
   }
->>>>>>> release/0.0.2
 }
 
 export default Base;

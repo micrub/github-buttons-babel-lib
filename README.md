@@ -7,7 +7,6 @@ Convenience compilation of open source projects for NPM based distribution.
 * NPM and BOWER module distribution
 * Porting `Renderer` to Babel.
 * Expose interface for:
-  * [ Vue ](https://github.com/ntkme/github-buttons/tree/master/dist/vue)
   * [ React ](https://github.com/ntkme/github-buttons/tree/master/dist/react)
   * [ Renderer ](https://github.com/ntkme/github-buttons/blob/master/dist/buttons.js)
   * Optional:
