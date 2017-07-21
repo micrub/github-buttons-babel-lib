@@ -1,12 +1,13 @@
 {
   "private": true,
-  "name": "github-buttons-babel-lib",
-  "version": "0.0.2",
+  "name": "@michaelr/github-buttons-babel-lib",
+  "version": "0.0.3",
   "description": "Github-buttons Unofficial Babel starter kit based module distribution library source code repository.",
   "license": "MIT",
   "keywords": [],
   "main": "index.js",
   "jsnext:main": "index.es.js",
+  "repository": {"type":"git","url":"https://github.com/micrub/github-buttons-babel-lib"},
   "babel": {
     "presets": [
       "latest",
